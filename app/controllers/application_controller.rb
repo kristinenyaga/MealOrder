@@ -4,4 +4,4 @@ class ApplicationController < Sinatra::Base
         {hello: "Just a starting code 😃"}.to_json
     end
 
-   
+end
