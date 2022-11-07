@@ -4,7 +4,6 @@ Meal.destroy_all
 
 # place your seeds here
 
-
 15.times do
     Customer.create(name: Faker::Name.name)
   end
