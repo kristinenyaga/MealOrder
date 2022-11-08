@@ -1,6 +1,6 @@
 puts "🌱 Seeding data..."
-Customer.destroy_all
-Meal.destroy_all
+# Customer.destroy_all
+# Meal.destroy_all
 
 # place your seeds here
 
@@ -20,13 +20,16 @@ Meal.destroy_all
     )
   end
 
+
+  
+
 #     Meal.all.each do |meal|
-#     # create between 1 and 5 orders for each meal
+#     create between 1 and 5 orders for each meal
 #     3.times do
-#       # get a random customer for every order
+#       get a random customer for every order
 #       customer = Customer.order('RANDOM()').first
   
-#       # A order belongs to a meal and a customer, so we must provide those foreign keys
+#       A order belongs to a meal and a customer, so we must provide those foreign keys
 #       Order.create(
 #         order_number: Faker::Alphanumeric.alphanumeric(number: 5),
 #         meal_id: meal.id,
@@ -34,6 +37,8 @@ Meal.destroy_all
 #       )
 #     end
 # end
+
+
 
   
   
