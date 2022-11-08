@@ -16,20 +16,20 @@ class ApplicationController < Sinatra::Base
     end
 
 # Update Customers
-    patch '/customer/:id' do 
-        customer_update = Customer.find(params[:id])
-        customer_update.update(
-            name: params[:title]
-            status: true,
-            {message: "To Do List Updated"}.to_json
-        )
-    end
+    # patch '/customer/:id' do 
+    #     customer_update = Customer.find(params[:id])
+    #     customer_update.update(
+    #         name: params[:title],
+    #         status: true
+    #         {message: "To Do List Updated"}.to_json
+    #     )
+    # end
 
 
     # Delete by id
     delete '/customers/:id' do
         customer_delete = Customer.find(params[:id])
-        customer_delete.:destroy.to_json
+        customer_delete.destroy.to_json
     end
 
 end
