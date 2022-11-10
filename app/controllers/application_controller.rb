@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
 
 
     get '/' do # this is the root route of the application (the homepage) but you can have as many routes as you want
-        {hello: " I am Dyes Junior😃"}.to_json
+        {hello: " We are group 6😃"}.to_json
     end
 
     #have a list of all the customers
@@ -34,15 +34,15 @@ class ApplicationController < Sinatra::Base
     end
 
     #A list of all the orders
-    get 'order' do
+    get '/order' do
         Order.all.to_json
     end
 
     #A specific order
-    get '/order/:id' do
-        params[:id]
-        Order.find(params[:id]).to_json
-    end
+    # get '/order/:id' do
+    #     params[:id]
+    #     Order.find(params[:id]).to_json
+    # end
 
     get '/order/:id' do
         Order.find(params[:id]).to_json(include: :meal)
@@ -65,7 +65,7 @@ class ApplicationController < Sinatra::Base
 
 
     #Deleting an order
-    delete '/order' do
+    delete '/order/:id' do
         order = Order.find(params[:id])
         order.destroy
         {message: "Your order has been deleted"}.to_json
