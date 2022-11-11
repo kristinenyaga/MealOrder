@@ -1,8 +1,32 @@
 class ApplicationController < Sinatra::Base
-    set :default_content_type,"application/json"
-    get '/' do # this is the root route of the application (the homepage) but you can have as many routes as you want
-        {hello: "Just a starting code 😃"}.to_json
+    set :default_content_type, "application/json"
+    # get '/' do # this is the root route of the application (the homepage) but you can have as many routes as you want
+    #     {hello: "Just a starting code 😃"}.to_json
+    # end
+
+    before do
+        response.headers["Access-Control-Allow-Origin"] = "*"
     end
+
+     # enable CORS preflight requests
+    options "*" do
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    end
+
+    set :default_content_type, "application/json"
+    # get '/' do # this is the root route of the application (the homepage) but you can have as many routes as you want
+    #     {hello: "Just a starting code 😃"}.to_json
+    # end
+
+    before do
+        response.headers["Access-Control-Allow-Origin"] = "*"
+    end
+
+     # enable CORS preflight requests
+    options "*" do
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    end
+
 # Get all customers
     get '/customers' do 
        customers = Customer.all
@@ -15,21 +39,16 @@ class ApplicationController < Sinatra::Base
         customer_id.to_json
     end
 
-# Update Customers
-    # patch '/customer/:id' do 
-    #     customer_update = Customer.find(params[:id])
-    #     customer_update.update(
-    #         name: params[:title],
-    #         status: true
-    #         {message: "To Do List Updated"}.to_json
-    #     )
-    # end
-
-
     # Delete by id
     delete '/customers/:id' do
         customer_delete = Customer.find(params[:id])
         customer_delete.destroy.to_json
     end
+
+    # Meals
+    get '/meals' do 
+        Meal.all.limit(8).to_json
+    end
+    
 
 end
